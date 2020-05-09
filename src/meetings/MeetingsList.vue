@@ -20,9 +20,17 @@
                 </ul>
             </td>
 
-            <td>
+            <td v-if = "meeting.participants.length === 0">
                 <button @click = removeMeeting(meeting) style="float: right;margin-left: 15px">Usuń puste spotkanie</button>
                 <button @click = addParticipant(meeting) class="button button-outline" style="float: right">Zapisz się</button>
+            </td>
+
+            <td v-else-if = "!meeting.participants.find((element)=> element == username)">
+                <button @click = addParticipant(meeting) class="button button-outline" style="float: right">Zapisz się</button>
+            </td>
+
+            <td v-else>
+                <button @click = removeParticipant(meeting) class="button button-outline" style="float: right">Wypisz się</button>
             </td>
         </tr>
         </tbody>
@@ -34,10 +42,13 @@
         props: ['meetings','username'],
         methods: {
             removeMeeting(meeting) {
-                this.$emit('remove', meeting);
+                this.$emit('removeMeeting', meeting);
             },
             addParticipant(meeting){
                 this.$emit('addUser', meeting);
+            },
+            removeParticipant(meeting){
+                this.$emit('removeParticipant', meeting);
             }
         }
     }

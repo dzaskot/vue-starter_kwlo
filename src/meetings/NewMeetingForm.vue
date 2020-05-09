@@ -31,6 +31,7 @@
                         this.$emit('added', this.newMeeting);
                         this.newMeeting = {};
                         this.adding = false;
+                        this.error = '';
                     }
                 }
                 else{
