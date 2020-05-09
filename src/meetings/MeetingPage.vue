@@ -25,17 +25,12 @@
         },
         methods: {
             addNewMeeting(meeting) {
-                this.meetings.push(meeting);
+                this.meetings.push({...meeting, participants: []});
             },
             removeMeeting(meeting) {
                 this.meetings = this.meetings.filter((element)=>element.name !== meeting.name);
             },
             addParticipant(meeting){
-                /*this.meetings = this.meetings.map((element) =>
-                    element.name === meeting.name
-                        ? element.participants.push(this.username)
-                        : element
-                );*/
                 this.meetings.find((element) =>
                     element.name === meeting.name).participants.push(this.username);
             }
