@@ -1,6 +1,5 @@
 <template>
     <div>
-        <button >Dodaj nowe spotkanie</button>
         <new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
         <h3>Zaplanowanie zajęcia ({{meetings.length}})</h3>
         <meetings-list :meetings="meetings"></meetings-list>
