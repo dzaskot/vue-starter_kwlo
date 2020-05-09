@@ -1,9 +1,9 @@
 <template>
     <div>
-        <new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
+        <new-meeting-form @added="addNewMeeting($event)" :meetings="meetings"></new-meeting-form>
         <div v-if = "meetings.length !== 0">
             <h3>Zaplanowanie zajęcia ({{meetings.length}})</h3>
-            <meetings-list @addUser="addParticipant($event)" @remove ="removeMeeting($event)" :meetings="meetings"></meetings-list>
+            <meetings-list @addUser="addParticipant($event)" @remove ="removeMeeting($event)" :meetings="meetings" :username="username"></meetings-list>
         </div>
         <div v-else>
             <p >Brak zaplanowanych spotkań.</p>

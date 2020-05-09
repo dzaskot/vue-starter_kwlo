@@ -13,6 +13,7 @@
 
 <script>
     export default {
+        props: ['meetings'],
         data() {
             return {
                 newMeeting: {},
@@ -22,10 +23,15 @@
         },
         methods: {
             addNewMeeting() {
-                if(!!this.newMeeting.name) {
-                    this.$emit('added', this.newMeeting);
-                    this.newMeeting = {};
-                    this.adding = false;
+                if(!!this.newMeeting.name){
+                    if(this.meetings.find((element)=>element.name === this.newMeeting.name)){
+                        this.error = ' Spotkanie musi mieć unikalną nazwę!';
+                    }
+                    else {
+                        this.$emit('added', this.newMeeting);
+                        this.newMeeting = {};
+                        this.adding = false;
+                    }
                 }
                 else{
                     this.error = ' Spotkanie musi mieć nazwę!';

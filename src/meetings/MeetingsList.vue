@@ -19,6 +19,7 @@
                     </li>
                 </ul>
             </td>
+
             <td>
                 <button @click = removeMeeting(meeting) style="float: right;margin-left: 15px">Usuń puste spotkanie</button>
                 <button @click = addParticipant(meeting) class="button button-outline" style="float: right">Zapisz się</button>
@@ -30,7 +31,7 @@
 
 <script>
     export default {
-        props: ['meetings'],
+        props: ['meetings','username'],
         methods: {
             removeMeeting(meeting) {
                 this.$emit('remove', meeting);
