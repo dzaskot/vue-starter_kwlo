@@ -1,11 +1,11 @@
 <template>
   <div>
     <h1>Witaj w systemie zapisów na zajęcia</h1>
-    <div v-if= "authenticatedUserName !==''">
+    <div v-show= "authenticatedUserName">
       <logout :username="authenticatedUserName" @logout="logOut()"></logout>
       <meeting-page></meeting-page>
     </div>
-    <div v-else>
+    <div v-if = "!authenticatedUserName">
       <login-form @login="logIn($event)" button-label="Zaloguj się"></login-form>
     </div>
   </div>

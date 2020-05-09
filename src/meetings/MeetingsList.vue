@@ -5,6 +5,7 @@
             <th>Nazwa spotkania</th>
             <th>Opis</th>
             <th>Uczestnicy</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -12,6 +13,10 @@
             <td>{{ meeting.name }}</td>
             <td>{{ meeting.description}}</td>
             <td>{{ meeting.participants}}</td>
+            <td>
+                <button @click = removeMeeting(meeting) style="float: right;margin-left: 15px">Usuń puste spotkanie</button>
+                <button class="button button-outline" style="float: right">Zapisz się</button>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -19,6 +24,12 @@
 
 <script>
     export default {
-        props: ['meetings']
+        props: ['meetings'],
+        methods: {
+            removeMeeting(meeting) {
+                this.$emit('remove', meeting);
+            }
+        }
     }
+
 </script>
