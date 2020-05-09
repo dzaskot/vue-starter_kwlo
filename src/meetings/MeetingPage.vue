@@ -1,8 +1,13 @@
 <template>
     <div>
         <new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
-        <h3>Zaplanowanie zajęcia ({{meetings.length}})</h3>
-        <meetings-list :meetings="meetings"></meetings-list>
+        <div v-if = "meetings.length !== 0">
+            <h3>Zaplanowanie zajęcia ({{meetings.length}})</h3>
+            <meetings-list :meetings="meetings"></meetings-list>
+        </div>
+        <div v-else>
+            <p >Brak zaplanowanych spotkań. </p>
+        </div>
     </div>
 </template>
 

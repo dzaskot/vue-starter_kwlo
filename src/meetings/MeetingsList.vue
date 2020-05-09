@@ -1,22 +1,20 @@
 <template>
-    <table v-if="meetings.length > 0">
+    <table>
         <thead>
         <tr>
             <th>Nazwa spotkania</th>
             <th>Opis</th>
+            <th>Uczestnicy</th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="meeting in meetings" :key="meeting.name">
             <td>{{ meeting.name }}</td>
-            <td>{{ meeting.description }}</td>
+            <td>{{ meeting.description}}</td>
+            <td>{{ meeting.participants}}</td>
         </tr>
         </tbody>
     </table>
-    <table v-else>
-        <p >Brak zaplanowanych spotkań. </p>
-    </table>
-
 </template>
 
 <script>
