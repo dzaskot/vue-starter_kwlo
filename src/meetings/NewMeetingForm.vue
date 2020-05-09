@@ -15,7 +15,7 @@
     export default {
         data() {
             return {
-                newMeeting: {},
+                newMeeting: {participants: []},
                 adding: false,
                 error: ''
             };

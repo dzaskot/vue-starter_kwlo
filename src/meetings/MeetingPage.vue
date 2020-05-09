@@ -3,7 +3,7 @@
         <new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
         <div v-if = "meetings.length !== 0">
             <h3>Zaplanowanie zajęcia ({{meetings.length}})</h3>
-            <meetings-list @remove ="removeMeeting($event)" :meetings="meetings" :username="userNameLogged"></meetings-list>
+            <meetings-list @addUser="addParticipant($event)" @remove ="removeMeeting($event)" :meetings="meetings"></meetings-list>
         </div>
         <div v-else>
             <p >Brak zaplanowanych spotkań.</p>
@@ -21,7 +21,6 @@
         data() {
             return {
                 meetings: [],
-                userNameLogged: this.username,
             };
         },
         methods: {
@@ -30,6 +29,15 @@
             },
             removeMeeting(meeting) {
                 this.meetings = this.meetings.filter((element)=>element.name !== meeting.name);
+            },
+            addParticipant(meeting){
+                /*this.meetings = this.meetings.map((element) =>
+                    element.name === meeting.name
+                        ? element.participants.push(this.username)
+                        : element
+                );*/
+                this.meetings.find((element) =>
+                    element.name === meeting.name).participants.push(this.username);
             }
         }
     }
