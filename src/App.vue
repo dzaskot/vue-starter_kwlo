@@ -3,7 +3,7 @@
     <h1>Witaj w systemie zapisów na zajęcia</h1>
     <div v-show= "authenticatedUserName">
       <logout :username="authenticatedUserName" @logout="logOut()"></logout>
-      <meeting-page></meeting-page>
+      <meeting-page :username="authenticatedUserName"></meeting-page>
     </div>
     <div v-if = "!authenticatedUserName">
       <login-form @login="logIn($event)" button-label="Zaloguj się"></login-form>
